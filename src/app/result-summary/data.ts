@@ -1,22 +1,32 @@
-export const Data = [
+import { DataInterface } from './models/DataInterface';
+
+export const Data: DataInterface[] = [
   {
-    "category": "Reaction",
-    "score": 80,
-    "icon": "./assets/images/icon-reaction.svg"
+    category: { text: 'Reaction', styles: ['text-red-500'] },
+    score: 80,
+    icon: './assets/images/icon-reaction.svg',
+    maxScore: 100,
+    styles: ['bg-pink-100'],
   },
   {
-    "category": "Memory",
-    "score": 92,
-    "icon": "./assets/images/icon-memory.svg"
+    category: { text: 'Memory', styles: ['text-yellow-400'] },
+    score: 92,
+    maxScore: 100,
+    icon: './assets/images/icon-memory.svg',
+    styles: ['bg-yellow-100'],
   },
   {
-    "category": "Verbal",
-    "score": 61,
-    "icon": "./assets/images/icon-verbal.svg"
+    category: { text: 'Verbal', styles: ['text-teal-500'] },
+    score: 61,
+    maxScore: 100,
+    icon: './assets/images/icon-verbal.svg',
+    styles: ['bg-green-100'],
   },
   {
-    "category": "Visual",
-    "score": 72,
-    "icon": "./assets/images/icon-visual.svg"
-  }
-]
+    category: { text: 'Visual', styles: ['text-blue-900'] },
+    maxScore: 100,
+    score: 72,
+    icon: './assets/images/icon-visual.svg',
+    styles: ['bg-blue-50'],
+  },
+];

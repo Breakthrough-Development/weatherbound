@@ -1,29 +1,36 @@
-<section>
+<section class="bg-gradient-to-r from-indigo-600 to-indigo-900 text-center">
 
-  <h1>Your Result</h1>
-  <p><span>76</span>
-    <span>of 100</span></p>
+  <h1 class="font-hanken font-bold text-2xl leading-7 text-blue-200">Your Result</h1>
+  <p><span class="font-hanken font-extrabold text-9xl leading-none text-center text-white block">76</span>
+    <span
+      class="block font-hanken font-bold text-base leading-5 text-blue-200 mix-blend-normal opacity-50">of 100</span>
+  </p>
 
-  <h2>Great</h2>
-  <p>You scored higher than 65% of the people who have taken these tests.</p>
+  <h2 class="font-hanken font-bold text-2xl md:text-4xl leading-10 text-center text-white">Great</h2>
+  <p class="font-hanken font-medium text-base leading-5 text-blue-200 text-center">You scored higher than 65% of the
+    people who have taken these tests.</p>
 
 </section>
 
-<section>
-  <h1>Summary</h1>
+<section class="bg-white p-8 flex flex-col gap-6">
+  <h1 class="font-hanken font-bold text-base leading-5 text-navy-dark">Summary</h1>
 
-  <p><span>Reaction</span>
-    <span>80 / 100</span></p>
+  <section class="flex flex-col gap-4">
+    <div *ngFor="let item of data; let i = index" class="rounded-lg p-4  {{item.styles}}">
+      <p
+        class="inline-block"
+      >
+        <img [src]="item.icon" class="inline-block">
+        <span class=" inline-block font-hanken font-medium text-base leading-5 {{item.category.styles}}">{{item.category.text}}</span>
+      </p>
+      <p class="inline-block">
+        <span class="font-hanken font-bold text-base leading-5 text-right text-navy-dark">{{item.score}}</span><span
+        class="font-hanken font-bold text-base leading-5 text-right text-navy-dark opacity-50"> / {{item.maxScore}}</span>
+      </p>
+    </div>
+  </section>
 
-  <p><span>Memory</span>
-    <span>92 / 100</span></p>
+  <button class="bg-blue-900 rounded-full font-bold text-white text-lg w-full text-center py-4">Continue</button>
 
-  <p><span>Verbal</span>
-    <span>61 / 100</span></p>
-
-  <p><span>Visual</span>
-    <span>72 / 100</span></p>
-
-  <button>Continue</button>
 </section>
 

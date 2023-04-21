@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Data} from "./data";
+import {DataInterface} from "./models/DataInterface";
 @Component({
   selector: 'app-result-summary',
   templateUrl: './result-summary.component.html',
@@ -7,5 +8,5 @@ import {Data} from "./data";
 })
 export class ResultSummaryComponent {
 
-  data = Data
+  data: DataInterface[] = Data
 }
