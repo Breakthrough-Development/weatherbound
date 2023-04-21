@@ -1,10 +1,12 @@
-<section class="bg-gradient-to-r from-indigo-600 to-indigo-900 text-center">
+<section class="flex flex-col gap-6 items-center justify-center bg-gradient-to-b from-purple-600 to-blue-900 rounded-b-3xl pt-6 pr-14 pb-10 pl-14 shadow-lg text-center">
 
   <h1 class="font-hanken font-bold text-2xl leading-7 text-blue-200">Your Result</h1>
-  <p><span class="font-hanken font-extrabold text-9xl leading-none text-center text-white block">76</span>
-    <span
-      class="block font-hanken font-bold text-base leading-5 text-blue-200 mix-blend-normal opacity-50">of 100</span>
-  </p>
+
+  <section class="w-36 h-36 py-6 px-10 aspect-w-1 rounded-full bg-gradient-to-br from-purple-700 to-transparent">
+    <p class="font-hanken font-extrabold text-6xl leading-none text-center text-white ">76</p>
+    <p
+      class="font-hanken font-bold text-base leading-5 text-blue-200 mix-blend-normal opacity-50">of 100</p>
+  </section>
 
   <h2 class="font-hanken font-bold text-2xl md:text-4xl leading-10 text-center text-white">Great</h2>
   <p class="font-hanken font-medium text-base leading-5 text-blue-200 text-center">You scored higher than 65% of the
@@ -13,6 +15,7 @@
 </section>
 
 <section class="bg-white p-8 flex flex-col gap-6">
+
   <h1 class="font-hanken font-bold text-base leading-5 text-navy-dark">Summary</h1>
 
   <section class="flex flex-col gap-4">
@@ -20,7 +23,7 @@
       <p
         class="inline-block "
       >
-        <img [src]="item.icon.src" class="inline-block" [alt]="item.icon.alt">
+        <img [alt]="item.icon.alt" [src]="item.icon.src" class="inline-block">
         <span class=" inline-block font-hanken font-medium text-base leading-5 {{item.category.styles}}">{{item.category.text}}</span>
       </p>
       <p class="inline-block">
