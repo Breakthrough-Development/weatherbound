@@ -2,3 +2,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+/*body {*/
+/*  font-family: 'Hanken Grotesk', sans-serif;*/
+/*}*/
