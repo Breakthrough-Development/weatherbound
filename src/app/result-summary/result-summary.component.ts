@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import {Data} from "./data";
 @Component({
   selector: 'app-result-summary',
   templateUrl: './result-summary.component.html',
@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class ResultSummaryComponent {
 
+  data = Data
 }

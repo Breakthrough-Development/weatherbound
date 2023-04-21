@@ -1,4 +1,4 @@
-[
+export const Data = [
   {
     "category": "Reaction",
     "score": 80,
