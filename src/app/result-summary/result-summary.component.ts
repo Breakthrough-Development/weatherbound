@@ -5,9 +5,9 @@ import { DataInterface } from './models/DataInterface';
   selector: 'app-result-summary',
   templateUrl: './result-summary.component.html',
   styleUrls: ['./result-summary.component.css'],
-  host: {
-    class: ' @container',
-  },
+  // host: {
+  //   class: ' @container',
+  // },
 })
 export class ResultSummaryComponent {
   data: DataInterface[] = Data;
