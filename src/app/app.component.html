@@ -1,10 +1,10 @@
 <div class="bg-indigo-100 min-h-screen grid grid-rows-[auto_1fr_auto] grid-cols-1 justify-center items-center">
   <header class="bg-blue-900 font-bold text-white text-lg w-full text-center py-4 flex justify-around">
 
-    <h1><img class="inline mr-3" src="assets/images/icon-weather.svg" alt="simplify cloud icon">WeatherBound</h1>
+    <h1><img alt="simplify cloud icon" class="inline mr-3" src="assets/images/icon-weather.svg">WeatherBound</h1>
     <section>
-      <button (click)="handleLogin('login')" [ngClass]="{'hidden': isLogin}" class="bg-blue-900 text-lg">Login</button>
-      <button (click)="handleLogin('logout')" [ngClass]="{'hidden': !isLogin}" class="bg-blue-900 text-lg">Logout
+      <button [ngClass]="{'hidden': isLogin}" class="bg-blue-900 text-lg" (click)="handleLogin()">Login</button>
+      <button (click)="handleLogout()" [ngClass]="{'hidden': !isLogin}" class="bg-blue-900 text-lg">Logout
       </button>
     </section>
   </header>
@@ -12,12 +12,11 @@
     <app-result-summary></app-result-summary>
   </main>
 
-
   <footer class="justify-self-center">
     <section class="attribution">
       Coded by
       <a class="bg-blue-900 rounded-full text-white underline text-lg w-full text-center py-4 hover:bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text"
-         href="https://www.royeradames.com" target="_blank" rel="noopener noreferrer">Royer Adames.</a>
+         href="https://www.royeradames.com" rel="noopener noreferrer" target="_blank">Royer Adames.</a>
     </section>
   </footer>
 
