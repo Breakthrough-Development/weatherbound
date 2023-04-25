@@ -1,16 +1,50 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from './services/auth/auth.service';
+import { UserService } from './services/user/user.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'results-summary-component';
   isLogin = false;
 
-  handleLogin(login: 'logout' | 'login') {
-    this.isLogin = !this.isLogin;
-    console.log(login);
+  constructor(
+    private readonly cookieService: CookieService,
+    private readonly authService: AuthService,
+    private readonly userService: UserService
+  ) {}
+
+  ngOnInit(): void {
+    // Verify user
+    this.authService.verify().subscribe({
+      next: (user) => {
+        console.log('User:', user);
+        this.userService.user.next(user);
+      },
+      error: (error) => {
+        console.error('Error during token verification:', error);
+      },
+    });
+  }
+
+  handleLogin(): void {
+    // Call Google authentication endpoint
+    this.authService.googleAuth().subscribe({
+      next: (response) => {
+        console.log('Google auth response:', response);
+      },
+      error: (error) => {
+        console.error('Error during Google authentication:', error);
+      },
+    });
+  }
+
+  handleLogout(): void {
+    this.cookieService.delete('token');
+    this.isLogin = false;
   }
 }
