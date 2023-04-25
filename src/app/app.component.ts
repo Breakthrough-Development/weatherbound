@@ -21,9 +21,9 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     // Verify user
     this.authService.verify().subscribe({
-      next: (user) => {
-        console.log('User:', user);
-        this.userService.user.next(user);
+      next: (response) => {
+        console.log('User:', response);
+        this.userService.user.next(response.data);
       },
       error: (error) => {
         console.error('Error during token verification:', error);
