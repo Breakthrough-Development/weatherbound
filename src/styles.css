@@ -9,6 +9,7 @@
   font-weight: 400;
   font-style: normal;
 }
-:host{
+
+:host {
   font-family: 'Hanken Grotesk', sans-serif;
 }
