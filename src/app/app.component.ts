@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth/auth.service';
 import { UserService } from './services/user/user.service';
-import { UserInterface } from './services/user/user.model';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +9,9 @@ import { UserInterface } from './services/user/user.model';
 })
 export class AppComponent implements OnInit {
   title = 'results-summary-component';
-  isLogin = false;
-  user: UserInterface | null = null;
+  isLogin = this.authService.isLogin.value;
   loginUrl = this.authService.googleAuthUrl;
+  user = this.userService.user.value;
 
   constructor(
     private readonly authService: AuthService,
@@ -20,10 +19,10 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.authService.isLogin.subscribe((value) => (this.isLogin = value));
     // Verify user
     this.authService.verify().subscribe({
       next: (response) => {
-        console.log('User:', response);
         this.userService.user.next(response.data);
         this.isLogin = true;
       },
