@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth/auth.service';
 import { UserService } from './services/user/user.service';
+import { WeatherService } from './services/weather/weather.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private readonly authService: AuthService,
-    private readonly userService: UserService
+    private readonly userService: UserService,
+    private readonly weatherService: WeatherService
   ) {}
 
   ngOnInit(): void {
@@ -25,6 +27,14 @@ export class AppComponent implements OnInit {
       next: (response) => {
         this.userService.user.next(response.data);
         this.isLogin = true;
+        this.weatherService.current('new york').subscribe({
+          next: (value) => {
+            console.log(value.data);
+          },
+          error: (error) => {
+            console.error('Error during the forecast call', error);
+          },
+        });
       },
       error: (error) => {
         console.error('Error during token verification:', error);

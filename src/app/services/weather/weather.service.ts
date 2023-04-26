@@ -12,11 +12,25 @@ export class WeatherService {
 
   constructor() {}
 
-  forecast(): Observable<AxiosResponse<UserWithSettingsType>> {
+  forecast(query: string): Observable<AxiosResponse<any>> {
     return from(
-      axios.get(`${environment['BACKEND_URL']}/${this.endpoints.forecast}`, {
-        withCredentials: true,
-      })
+      axios.get(
+        `${environment['BACKEND_URL']}/${this.endpoints.forecast}?query=${query}`,
+        {
+          withCredentials: true,
+        }
+      )
+    );
+  }
+
+  autocomplete(query: string): Observable<AxiosResponse<any>> {
+    return from(
+      axios.get(
+        `${environment['BACKEND_URL']}/${this.endpoints.autocomplete}?query=${query}`,
+        {
+          withCredentials: true,
+        }
+      )
     );
   }
 
