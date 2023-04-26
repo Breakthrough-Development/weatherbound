@@ -1,11 +1,18 @@
 <div class="bg-indigo-100 min-h-screen grid grid-rows-[auto_1fr_auto] grid-cols-1 justify-center items-center">
-  <header class="bg-blue-900 font-bold text-white text-lg w-full text-center py-4 flex justify-around">
+  <header class="bg-blue-900 font-bold text-white text-lg w-full text-center py-4 flex justify-around gap-3">
 
     <h1><img alt="simplify cloud icon" class="inline mr-3" src="assets/images/icon-weather.svg">WeatherBound</h1>
     <section>
-      <a [ngClass]="{'hidden': isLogin}" class="bg-blue-900 text-lg" [href]="loginUrl">Login</a>
-      <button (click)="handleLogout()" [ngClass]="{'hidden': !isLogin}" class="bg-blue-900 text-lg">Logout
-      </button>
+      <a [href]="loginUrl" [ngClass]="{'hidden': isLogin}" class="bg-blue-900 text-lg">Login</a>
+      <section [ngClass]="{'hidden': !isLogin}">
+        <img [src]="user?.photo"
+             alt="{{ user?.name }} - Profile Picture"
+             class="inline-block mr-3 h-10 w-10 rounded-full">
+        <button (click)="handleLogout()" class="bg-blue-900 text-lg">Logout
+          <span class="hidden sm:inline-block">{{ user?.name }}</span>
+        </button>
+
+      </section>
     </section>
   </header>
   <main>
