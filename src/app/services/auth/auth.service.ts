@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import axios, { AxiosResponse } from 'axios';
 import { BehaviorSubject, from, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { AUTH_ENDPOINTS } from '../../auth-endpoints';
+import { AUTH_ENDPOINTS } from './auth-endpoints';
 import { UserWithSettingsType } from '../user/user-with-settings.model';
 
 @Injectable({
