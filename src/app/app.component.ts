@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from './services/auth/auth.service';
 import { UserService } from './services/user/user.service';
 import { UserInterface } from './services/user/user.model';
@@ -15,7 +14,6 @@ export class AppComponent implements OnInit {
   user: UserInterface | null = null;
 
   constructor(
-    private readonly cookieService: CookieService,
     private readonly authService: AuthService,
     private readonly userService: UserService
   ) {}
@@ -52,7 +50,6 @@ export class AppComponent implements OnInit {
   }
 
   handleLogout(): void {
-    this.cookieService.delete('token');
     this.isLogin = false;
   }
 }
