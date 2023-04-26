@@ -15,11 +15,7 @@ export class AuthService {
 
   constructor() {}
 
-  googleAuth(): Observable<AxiosResponse<void>> {
-    return from(
-      axios.get(`${environment['BACKEND_URL']}/${this.endpoints.googleAuth}`)
-    );
-  }
+  googleAuthUrl = `${environment['BACKEND_URL']}/${this.endpoints.googleAuth}`;
 
   verify(): Observable<AxiosResponse<UserInterface>> {
     return from(

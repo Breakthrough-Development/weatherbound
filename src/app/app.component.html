@@ -3,7 +3,7 @@
 
     <h1><img alt="simplify cloud icon" class="inline mr-3" src="assets/images/icon-weather.svg">WeatherBound</h1>
     <section>
-      <button [ngClass]="{'hidden': isLogin}" class="bg-blue-900 text-lg" (click)="handleLogin()">Login</button>
+      <a [ngClass]="{'hidden': isLogin}" class="bg-blue-900 text-lg" [href]="loginUrl">Login</a>
       <button (click)="handleLogout()" [ngClass]="{'hidden': !isLogin}" class="bg-blue-900 text-lg">Logout
       </button>
     </section>

@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   title = 'results-summary-component';
   isLogin = false;
   user: UserInterface | null = null;
+  loginUrl = this.authService.googleAuthUrl;
 
   constructor(
     private readonly authService: AuthService,
@@ -33,18 +34,6 @@ export class AppComponent implements OnInit {
     this.userService.user.subscribe({
       next: (value): void => {
         this.user = value;
-      },
-    });
-  }
-
-  handleLogin(): void {
-    // Call Google authentication endpoint
-    this.authService.googleAuth().subscribe({
-      next: (response) => {
-        console.log('Google auth response:', response);
-      },
-      error: (error) => {
-        console.error('Error during Google authentication:', error);
       },
     });
   }
