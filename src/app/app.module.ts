@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { InstructionsComponent } from './main/instructions/instructions.component';
 import { FooterComponent } from './footer/footer.component';
+import { SettingsComponent } from './main/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FooterComponent } from './footer/footer.component';
     HeaderComponent,
     InstructionsComponent,
     FooterComponent,
+    SettingsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
