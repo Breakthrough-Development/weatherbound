@@ -4,11 +4,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ForecastComponent } from './forecast/forecast.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HeaderComponent } from './forecast/header/header.component';
+import { HeaderComponent } from './header/header.component';
 import { InstructionsComponent } from './main/instructions/instructions.component';
 
 @NgModule({
-  declarations: [AppComponent, ForecastComponent, HeaderComponent, InstructionsComponent],
+  declarations: [
+    AppComponent,
+    ForecastComponent,
+    HeaderComponent,
+    InstructionsComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
