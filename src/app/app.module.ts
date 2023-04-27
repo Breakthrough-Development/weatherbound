@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { InstructionsComponent } from './main/instructions/instructions.component';
 import { FooterComponent } from './footer/footer.component';
 import { SettingsComponent } from './main/settings/settings.component';
+import { SettingsTogglerComponent } from './main/settings/settings-toggler/settings-toggler.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SettingsComponent } from './main/settings/settings.component';
     InstructionsComponent,
     FooterComponent,
     SettingsComponent,
+    SettingsTogglerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
