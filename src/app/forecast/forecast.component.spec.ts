@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResultSummaryComponent } from './result-summary.component';
+import { ForecastComponent } from './forecast.component';
 
-describe('ResultSummaryComponent', () => {
-  let component: ResultSummaryComponent;
-  let fixture: ComponentFixture<ResultSummaryComponent>;
+describe('ForecastComponent', () => {
+  let component: ForecastComponent;
+  let fixture: ComponentFixture<ForecastComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ResultSummaryComponent],
+      declarations: [ForecastComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ResultSummaryComponent);
+    fixture = TestBed.createComponent(ForecastComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

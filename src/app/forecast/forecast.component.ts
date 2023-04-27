@@ -4,11 +4,11 @@ import { DataInterface } from './models/DataInterface';
 import { WeatherService } from '../services/weather/weather.service';
 
 @Component({
-  selector: 'app-result-summary',
-  templateUrl: './result-summary.component.html',
-  styleUrls: ['./result-summary.component.css'],
+  selector: 'app-forecast',
+  templateUrl: './forecast.component.html',
+  styleUrls: ['./forecast.component.css'],
 })
-export class ResultSummaryComponent implements OnInit {
+export class ForecastComponent implements OnInit {
   currentWeather = this.weatherService.currentData.value;
   data: DataInterface[] = Data;
 
