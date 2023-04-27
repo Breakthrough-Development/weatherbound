@@ -9,6 +9,7 @@ import { InstructionsComponent } from './main/instructions/instructions.componen
 import { FooterComponent } from './footer/footer.component';
 import { SettingsComponent } from './main/settings/settings.component';
 import { SettingsTogglerComponent } from './main/settings/settings-toggler/settings-toggler.component';
+import { WeatherIconComponent } from './header/svg/weather-icon/weather-icon.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SettingsTogglerComponent } from './main/settings/settings-toggler/setti
     FooterComponent,
     SettingsComponent,
     SettingsTogglerComponent,
+    WeatherIconComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

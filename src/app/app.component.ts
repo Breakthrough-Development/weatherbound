@@ -3,6 +3,7 @@ import { AuthService } from './services/auth/auth.service';
 import { UserService } from './services/user/user.service';
 import { WeatherService } from './services/weather/weather.service';
 import { SettingsService } from './main/settings/settings.service';
+import { InstructionsService } from './main/instructions/instructions.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent implements OnInit {
   isLogin = this.authService.isLogin.value;
   loginUrl = this.authService.googleAuthUrl;
   user = this.userService.user.value;
-  showInstructions = true; // todo: default is false
+  showInstructions = this.instructionsService.showInstructions.value;
   isSettings = this.settingsService.showSettings.value;
   @HostBinding('class') hostClasses =
     'bg-indigo-100 min-h-screen grid grid-rows-[auto_1fr_auto] grid-cols-1 justify-center';
@@ -23,10 +24,14 @@ export class AppComponent implements OnInit {
     private readonly authService: AuthService,
     private readonly settingsService: SettingsService,
     private readonly userService: UserService,
-    private readonly weatherService: WeatherService
+    private readonly weatherService: WeatherService,
+    private readonly instructionsService: InstructionsService
   ) {}
 
   ngOnInit(): void {
+    this.instructionsService.showInstructions.subscribe(
+      (value) => (this.showInstructions = value)
+    );
     this.settingsService.showSettings.subscribe(
       (value) => (this.isSettings = value)
     );
