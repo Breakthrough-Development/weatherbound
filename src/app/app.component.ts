@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { AuthService } from './services/auth/auth.service';
 import { UserService } from './services/user/user.service';
 import { WeatherService } from './services/weather/weather.service';
@@ -15,6 +15,8 @@ export class AppComponent implements OnInit {
   user = this.userService.user.value;
   showInstructions = true; // todo: default is false
   isSettings = false; // todo: default is false
+  @HostBinding('class') hostClasses =
+    'bg-indigo-100 min-h-screen grid grid-rows-[auto_1fr_auto] grid-cols-1 justify-center';
 
   constructor(
     private readonly authService: AuthService,

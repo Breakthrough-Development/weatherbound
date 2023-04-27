@@ -6,6 +6,7 @@ import { ForecastComponent } from './main/forecast/forecast.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { InstructionsComponent } from './main/instructions/instructions.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { InstructionsComponent } from './main/instructions/instructions.componen
     ForecastComponent,
     HeaderComponent,
     InstructionsComponent,
+    FooterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

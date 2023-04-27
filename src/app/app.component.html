@@ -1,18 +1,9 @@
-<div class="bg-indigo-100 min-h-screen grid grid-rows-[auto_1fr_auto] grid-cols-1 justify-center ">
-  <app-header></app-header>
-  <main [ngClass]="{'mt-12': !(showInstructions || !isLogin) && !isSettings}" class="flex flex-col gap-12">
-    <app-instructions></app-instructions>
-    <section *ngIf="isSettings" class=" p-8 flex flex-col gap-6" id="settings">
-    </section>
-    <app-forecast id="forecast"></app-forecast>
-  </main>
+<app-header></app-header>
+<main [ngClass]="{'mt-12': !(showInstructions || !isLogin) && !isSettings}" class="flex flex-col gap-12">
+  <app-instructions></app-instructions>
+  <section *ngIf="isSettings" class=" p-8 flex flex-col gap-6" id="settings">
+  </section>
+  <app-forecast id="forecast"></app-forecast>
+</main>
+<app-footer class="justify-self-center"></app-footer>
 
-  <footer class="justify-self-center">
-    <section class="attribution">
-      Coded by
-      <a class="bg-blue-900 rounded-full text-white underline text-lg w-full text-center py-4 hover:bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text"
-         href="https://www.royeradames.com" rel="noopener noreferrer" target="_blank">Royer Adames.</a>
-    </section>
-  </footer>
-
-</div>
