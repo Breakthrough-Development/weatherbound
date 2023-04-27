@@ -3,13 +3,13 @@
 
     <h1><img alt="simplify cloud icon" class="inline mr-3" src="assets/images/icon-weather.svg">WeatherBound</h1>
     <section>
-      <a [href]="loginUrl" [ngClass]="{'hidden': isLogin}" class="bg-blue-900 text-lg">Login</a>
-      <section [ngClass]="{'hidden': !isLogin}">
-        <img [src]="user?.photo"
-             alt="{{ user?.name }} - Profile Picture"
+      <a [href]="loginUrl" [ngClass]="{'hidden': isLogin}" class="bg-blue-900 text-lg" id="login">Login</a>
+      <section *ngIf="user" [ngClass]="{'hidden': !isLogin}" id="logout">
+        <img [src]="user.photo"
+             alt="{{ user.name }} - Profile Picture"
              class="inline-block mr-3 h-10 w-10 rounded-full">
-        <button (click)="handleLogout()" class="bg-blue-900 text-lg">Logout
-          <span class="hidden sm:inline-block">{{ user?.name }}</span>
+        <button (click)="handleLogout()" class="bg-blue-900 text-lg">
+          Logout<span class="hidden sm:inline-block">&nbsp;{{ user.name }}</span>
         </button>
 
       </section>
