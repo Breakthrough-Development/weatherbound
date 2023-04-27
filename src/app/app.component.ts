@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   isLogin = this.authService.isLogin.value;
   loginUrl = this.authService.googleAuthUrl;
   user = this.userService.user.value;
+  showInstructions = true; // todo: default is false
+  isSettings = false; // todo: default is false
 
   constructor(
     private readonly authService: AuthService,
@@ -22,13 +24,13 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.isLogin.subscribe((value) => (this.isLogin = value));
-    // Verify user
     this.authService.verify().subscribe({
       next: (response) => {
         this.userService.user.next(response.data);
         this.isLogin = true;
         this.weatherService.current('new york').subscribe({
           next: (value) => {
+            this.weatherService.currentData.next(value.data);
             console.log(value.data);
           },
           error: (error) => {
