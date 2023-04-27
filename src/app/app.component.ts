@@ -24,10 +24,15 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.isLogin.subscribe((value) => (this.isLogin = value));
+    this.userService.user.subscribe({
+      next: (value): void => {
+        this.user = value;
+      },
+    });
     this.authService.verify().subscribe({
       next: (response) => {
         this.userService.user.next(response.data);
-        this.isLogin = true;
+        this.authService.isLogin.next(true);
         this.weatherService.current('new york').subscribe({
           next: (value) => {
             this.weatherService.currentData.next(value.data);
@@ -40,11 +45,6 @@ export class AppComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error during token verification:', error);
-      },
-    });
-    this.userService.user.subscribe({
-      next: (value): void => {
-        this.user = value;
       },
     });
   }
