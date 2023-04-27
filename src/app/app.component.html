@@ -1,8 +1,7 @@
 <app-header></app-header>
 <main [ngClass]="{'mt-12': !(showInstructions || !isLogin) && !isSettings}" class="flex flex-col gap-12">
-  <app-instructions></app-instructions>
-  <section *ngIf="isSettings" class=" p-8 flex flex-col gap-6" id="settings">
-  </section>
+  <app-instructions id="instructions"></app-instructions>
+  <app-settings  class=" p-8 flex flex-col gap-6" id="settings"></app-settings>
   <app-forecast id="forecast"></app-forecast>
 </main>
 <app-footer class="justify-self-center"></app-footer>
