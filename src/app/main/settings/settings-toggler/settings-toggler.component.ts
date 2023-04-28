@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SettingsService } from '../settings.service';
 
 @Component({
-  selector: 'app-settings-icon',
+  selector: 'settings-toggler',
   templateUrl: './settings-toggler.component.html',
   styleUrls: ['./settings-toggler.component.css'],
 })
