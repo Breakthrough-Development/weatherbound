@@ -2,7 +2,8 @@
 <main [ngClass]="{'mt-12': !(showInstructions || !isLogin) && !isSettings}" class="flex flex-col gap-12 mb-12">
   <app-instructions *ngIf="showInstructions || !isLogin" id="instructions"></app-instructions>
   <app-settings *ngIf="isSettings" class=" p-8 flex flex-col gap-6" id="settings"></app-settings>
-  <app-forecast id="forecast"></app-forecast>
+  <app-search *ngIf="!isLogin"></app-search>
+  <app-forecast id="forecast" *ngIf="!isLogin"></app-forecast>
 </main>
 <app-footer class="justify-self-center"></app-footer>
 
