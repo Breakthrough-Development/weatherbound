@@ -47,6 +47,8 @@
       <button
         class="px-4 py-2 text-white bg-blue-500 hover:bg-blue-600 rounded focus:outline-none"
         type="submit"
+        [disabled]="isDisable"
+        [ngClass]="{ 'cursor-not-allowed opacity-50': isDisable }"
       >
         Update
       </button>
