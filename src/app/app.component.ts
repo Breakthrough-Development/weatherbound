@@ -44,6 +44,7 @@ export class AppComponent implements OnInit {
     this.authService.verify().subscribe({
       next: (response) => {
         this.userService.user.next(response.data);
+        this.settingsService.userSettings.next(response.data.settings);
         this.authService.isLogin.next(true);
       },
       error: (error) => {
