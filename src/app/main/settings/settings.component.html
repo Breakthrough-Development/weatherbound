@@ -40,6 +40,8 @@
           (click)="toggleAPIKeyVisibility()"
           class="absolute inset-y-0 right-0 px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 focus:outline-none"
           type="button"
+          [disabled]="isDisable"
+          [ngClass]="{ 'cursor-not-allowed opacity-50': isDisable }"
         >
           {{ showAPIKey ? 'Hide' : 'Show' }}
         </button>
