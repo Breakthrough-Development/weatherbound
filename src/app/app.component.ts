@@ -60,8 +60,4 @@ export class AppComponent implements OnInit {
       },
     });
   }
-
-  handleLogout(): void {
-    this.isLogin = false;
-  }
 }

@@ -22,4 +22,11 @@ export class AuthService {
       })
     );
   }
+  logout(): Observable<AxiosResponse<string>> {
+    return from(
+      axios.get(`${environment['BACKEND_URL']}/${this.endpoints.logout}`, {
+        withCredentials: true,
+      })
+    );
+  }
 }

@@ -28,6 +28,13 @@ export class HeaderComponent {
 
   handleLogout(): void {
     // todo: logout user in the backend
-    this.authService.isLogin.next(false);
+
+    this.authService.logout().subscribe({
+      next: (_value) => {
+        this.authService.isLogin.next(false);
+        this.userService.user.next(null);
+      },
+      error: (err) => console.log('Error login out: ', err),
+    });
   }
 }
