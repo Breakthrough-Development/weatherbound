@@ -1,0 +1,24 @@
+<form (submit)="onSearch()" [formGroup]="searchForm" class="w-full ">
+  <section class="mx-auto max-w-2xl relative">
+    <input
+      class="w-full border border-gray-300 rounded pl-10 p-2"
+      formControlName="search"
+      placeholder="Search..."
+      type="text"
+    />
+    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-600">
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+      </svg>
+    </span></section>
+</form>

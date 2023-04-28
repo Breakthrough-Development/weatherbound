@@ -45,15 +45,6 @@ export class AppComponent implements OnInit {
       next: (response) => {
         this.userService.user.next(response.data);
         this.authService.isLogin.next(true);
-        this.forecastService.current('new york').subscribe({
-          next: (value) => {
-            this.forecastService.currentData.next(value.data);
-            console.log(value.data);
-          },
-          error: (error) => {
-            console.error('Error during the forecast call', error);
-          },
-        });
       },
       error: (error) => {
         console.error('Error during token verification:', error);

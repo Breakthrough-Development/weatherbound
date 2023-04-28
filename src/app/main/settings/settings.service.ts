@@ -11,7 +11,10 @@ import { SettingsInterface } from './settings.model';
 })
 export class SettingsService {
   endpoints = SETTINGS_ENDPOINTS;
-  showSettings: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true); // todo: default is false
+  showSettings: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  areInputsDisable: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
   constructor() {}
 
   getSettings(): Observable<AxiosResponse<SettingsInterface>> {
