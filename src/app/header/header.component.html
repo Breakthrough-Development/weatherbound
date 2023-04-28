@@ -2,10 +2,11 @@
 
   <h1 class="flex items-center space-x-3">
     <svg-weather-icon></svg-weather-icon>
-    WeatherBound</h1>
+    WeatherBound
+  </h1>
   <section>
     <a [href]="loginUrl" [ngClass]="{'hidden': isLogin}" class="bg-blue-900 text-lg" id="login">Login</a>
-    <section class="flex items-center space-x-3" *ngIf="user" [ngClass]="{'hidden': !isLogin}" id="logout">
+    <section *ngIf="user" [ngClass]="{'hidden': !isLogin}" class="flex items-center space-x-3" id="logout">
       <img [src]="user.photo"
            alt="{{ user.name }} - Profile Picture"
            class="inline-block mr-3 h-10 w-10 rounded-full">

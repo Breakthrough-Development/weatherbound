@@ -12,6 +12,7 @@ export class WeatherService {
   endpoints = WEATHER_ENDPOINTS;
   currentData: BehaviorSubject<CurrentDataInterface | null> =
     new BehaviorSubject<CurrentDataInterface | null>(null);
+
   constructor() {}
 
   forecast(query: string): Observable<AxiosResponse<any>> {

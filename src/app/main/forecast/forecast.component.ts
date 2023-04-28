@@ -19,6 +19,7 @@ export class ForecastComponent implements OnInit {
       this.currentWeather = value;
     });
   }
+
   // location.name
   // current.temperature
   // current.weather_descriptions[0]
