@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     private readonly authService: AuthService,
     private readonly settingsService: SettingsService,
     private readonly userService: UserService,
-    private readonly weatherService: ForecastService,
+    private readonly forecastService: ForecastService,
     private readonly instructionsService: InstructionsService
   ) {}
 
@@ -45,9 +45,9 @@ export class AppComponent implements OnInit {
       next: (response) => {
         this.userService.user.next(response.data);
         this.authService.isLogin.next(true);
-        this.weatherService.current('new york').subscribe({
+        this.forecastService.current('new york').subscribe({
           next: (value) => {
-            this.weatherService.currentData.next(value.data);
+            this.forecastService.currentData.next(value.data);
             console.log(value.data);
           },
           error: (error) => {
