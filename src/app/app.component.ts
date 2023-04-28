@@ -49,6 +49,7 @@ export class AppComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error during token verification:', error);
+        this.userService.user.next(null);
       },
     });
   }
