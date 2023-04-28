@@ -4,7 +4,7 @@ import { SETTINGS_ENDPOINTS } from './settings.endpoints';
 import { UserInterface } from '../../services/user/user.model';
 import axios, { AxiosResponse } from 'axios';
 import { environment } from '../../../environments/environment';
-import { SettingsInterface } from './settings.model';
+import { SettingsInterface } from './models/settings.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +15,8 @@ export class SettingsService {
   areInputsDisable: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
+  userSettings: BehaviorSubject<SettingsInterface | null> =
+    new BehaviorSubject<SettingsInterface | null>(null);
   constructor() {}
 
   getSettings(): Observable<AxiosResponse<SettingsInterface>> {
