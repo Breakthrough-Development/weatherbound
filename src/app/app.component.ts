@@ -1,7 +1,7 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { AuthService } from './services/auth/auth.service';
 import { UserService } from './services/user/user.service';
-import { WeatherService } from './services/weather/weather.service';
+import { ForecastService } from './main/forecast/forecast.service';
 import { SettingsService } from './main/settings/settings.service';
 import { InstructionsService } from './main/instructions/instructions.service';
 
@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     private readonly authService: AuthService,
     private readonly settingsService: SettingsService,
     private readonly userService: UserService,
-    private readonly weatherService: WeatherService,
+    private readonly weatherService: ForecastService,
     private readonly instructionsService: InstructionsService
   ) {}
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Data } from './data';
 import { DataInterface } from './models/DataInterface';
-import { WeatherService } from '../../services/weather/weather.service';
+import { ForecastService } from './forecast.service';
 
 @Component({
   selector: 'app-forecast',
@@ -12,7 +12,7 @@ export class ForecastComponent implements OnInit {
   currentWeather = this.weatherService.currentData.value;
   data: DataInterface[] = Data;
 
-  constructor(private readonly weatherService: WeatherService) {}
+  constructor(private readonly weatherService: ForecastService) {}
 
   ngOnInit(): void {
     this.weatherService.currentData.subscribe((value) => {

@@ -1,4 +1,4 @@
-export interface CurrentDataInterface {
+export interface ForecastInterface {
   current: CurrentInterface;
   location: LocationInterface;
   request: RequestInterface;
