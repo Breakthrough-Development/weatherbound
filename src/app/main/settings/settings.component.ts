@@ -12,6 +12,7 @@ export class SettingsComponent implements OnInit {
   settingsForm: FormGroup;
   showAPIKey = false;
   isSettings = this.settingsService.showSettings.value;
+  isDisable = false;
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -25,6 +26,15 @@ export class SettingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userService.user.subscribe((user) => {
+      if (!user) {
+        this.isDisable = true;
+        this.settingsForm.disable();
+        return;
+      }
+      this.isDisable = false;
+      this.settingsForm.enable();
+    });
     this.settingsService.showSettings.subscribe(
       (value) => (this.isSettings = value)
     );
