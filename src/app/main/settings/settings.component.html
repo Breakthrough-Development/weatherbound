@@ -19,7 +19,7 @@
       <label class="block text-sm font-medium" for="baseUrl" [ngClass]="{ 'cursor-not-allowed opacity-50': isDisable }">Base URL</label>
       <input
         class="block w-full p-2 border border-gray-300 rounded"
-        formControlName="baseUrl"
+        [formControlName]="getControlName(settingsForm, settingsForm.controls.weatherApiUrl)"
         id="baseUrl"
         type="text"
         [ngClass]="{ 'cursor-not-allowed opacity-50': isDisable }"
@@ -32,7 +32,7 @@
         <input
           [type]="showAPIKey ? 'text' : 'password'"
           class="block w-full pr-10 p-2 border border-gray-300 rounded"
-          formControlName="weatherApiKey"
+          [formControlName]="getControlName(settingsForm, settingsForm.controls.apiKey)"
           id="weatherApiKey"
           [ngClass]="{ 'cursor-not-allowed opacity-50': isDisable }"
         />
