@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SettingsService } from './settings.service';
 import { UserService } from '../../services/user/user.service';
+import { SettingsFormInterface } from './models/settings-form.interface';
+import { getControlName } from './utility/get-control-name.utility';
 
 @Component({
   selector: 'app-settings',
