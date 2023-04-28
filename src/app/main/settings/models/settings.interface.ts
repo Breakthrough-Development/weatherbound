@@ -2,7 +2,7 @@ import { UserInterface } from '../../../services/user/user.model';
 
 export interface SettingsInterface {
   id: number;
-  apiKey: string;
-  weatherApiUrl: string;
+  apiKey: string | null;
+  weatherApiUrl: string | null;
   user: UserInterface;
 }
