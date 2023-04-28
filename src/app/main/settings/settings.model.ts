@@ -1,4 +1,4 @@
-import { UserInterface } from '../user/user.model';
+import { UserInterface } from '../../services/user/user.model';
 
 export interface SettingsInterface {
   id: number;

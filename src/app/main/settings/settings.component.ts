@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SettingsService } from './settings.service';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-settings',
@@ -14,7 +15,8 @@ export class SettingsComponent implements OnInit {
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private readonly settingsService: SettingsService
+    private readonly settingsService: SettingsService,
+    private readonly userService: UserService
   ) {
     this.settingsForm = this.formBuilder.group({
       baseUrl: '',
@@ -26,6 +28,16 @@ export class SettingsComponent implements OnInit {
     this.settingsService.showSettings.subscribe(
       (value) => (this.isSettings = value)
     );
+
+    //  get user settings and populate the settings input with them
+    this.settingsService.getSettings().subscribe({
+      next: (value) => {
+        this.settingsForm.setValue({
+          baseUrl: value.data.weatherApiUrl,
+          weatherApiKey: value.data.apiKey,
+        });
+      },
+    });
   }
 
   toggleAPIKeyVisibility() {
@@ -35,6 +47,16 @@ export class SettingsComponent implements OnInit {
   onSubmit(): void {
     console.log(this.settingsForm.value);
     // Perform your update logic here
+    if (!this.userService.user.value) return;
+    this.settingsService
+      .updateSettings(this.userService.user.value, {
+        weatherApiUrl: this.settingsForm.get('baseUrl')?.value,
+        apiKey: this.settingsForm.get('weatherApiKey')?.value,
+      })
+      .subscribe({
+        next: (value) => console.log('Success submit', value),
+        error: (err) => console.error('fail submit', err),
+      });
   }
 
   closeSettings(): void {
