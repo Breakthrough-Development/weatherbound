@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class InstructionsService {
   showInstructions: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    true
-  ); // todo: default is false
+    false
+  );
   constructor() {}
 }
