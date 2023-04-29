@@ -34,7 +34,7 @@ export class SettingsService {
     return from(
       axios.post(
         `${environment['BACKEND_URL']}/${this.endpoints.updateSettings}`,
-        { user, settings },
+        settings,
         {
           withCredentials: true,
         }
