@@ -4,6 +4,7 @@ import { SettingsService } from './settings.service';
 import { UserService } from '../../services/user/user.service';
 import { SettingsFormInterface } from './models/settings-form.interface';
 import { getControlName } from './utility/get-control-name.utility';
+import { isKeyOfSettingsFormInterface } from './models/is-key-of-settings-form-interface.type';
 
 @Component({
   selector: 'app-settings',
@@ -49,10 +50,13 @@ export class SettingsComponent implements OnInit {
 
     this.settingsService.userSettings.subscribe((value) => {
       if (!value) return;
-      this.settingsForm.setValue({
-        weatherApiUrl: value.weatherApiUrl || 'http://api.weatherstack.com/',
-        apiKey: value.apiKey || 'c46aea0acc96423739c71b056da54ea5',
-      });
+
+      for (let key in value) {
+        if (isKeyOfSettingsFormInterface(key) && value[key] != null) {
+          this.settingsForm.patchValue({ [key]: value[key] });
+          console.log(`key: ${key} has been updated`);
+        }
+      }
       console.log(value);
     });
   }
