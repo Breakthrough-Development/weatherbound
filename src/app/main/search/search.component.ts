@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { SettingsService } from '../settings/settings.service';
 import { ForecastService } from '../forecast/forecast.service';
+import { SettingsInterface } from '../settings/models/settings.interface';
 
 interface SearchForm {
   search: FormControl<string>;
@@ -12,8 +13,7 @@ interface SearchForm {
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
-export class SearchComponent {
-  isDisable = this.settingsService.areInputsDisable.value;
+export class SearchComponent implements OnInit {
   searchForm = new FormGroup<SearchForm>({
     search: new FormControl<string>('', { nonNullable: true }),
   });
@@ -23,6 +23,28 @@ export class SearchComponent {
     private readonly forecastService: ForecastService
   ) {}
 
+  ngOnInit(): void {
+    this.disableSearch(this.settingsService.userSettings.value);
+    this.settingsService.userSettings.subscribe((settings) => {
+      this.disableSearch(settings);
+    });
+  }
+
+  private disableSearch(settings: SettingsInterface | null): void {
+    if (
+      !settings ||
+      !settings?.apiKey ||
+      !settings?.weatherApiUrl ||
+      this.settingsService.areInputsDisable.value
+    ) {
+      console.log('Settings are not available');
+      this.searchForm.controls.search.disable();
+      return;
+    }
+
+    console.log('Settings are available');
+    this.searchForm.controls.search.enable();
+  }
   onSearch() {
     // disable search until key and url are available
     const searchInputValue = this.searchForm.controls.search.value;
