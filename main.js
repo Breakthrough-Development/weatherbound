@@ -6,9 +6,11 @@ require("dotenv").config();
 let mainWindow;
 
 function createWindow() {
+  const { screen } = require("electron");
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: width,
+    height: height,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
