@@ -5,7 +5,7 @@
     WeatherBound
   </h1>
   <section>
-    <a [href]="loginUrl" [ngClass]="{'hidden': isLogin}" class="bg-blue-900 text-lg" id="login" target="_blank">Login</a>
+    <a [href]="loginUrl" [ngClass]="{'hidden': isLogin}" class="bg-blue-900 text-lg" id="login">Login</a>
     <section *ngIf="user" [ngClass]="{'hidden': !isLogin}" class="flex items-center space-x-3" id="logout">
       <img [src]="user.photo"
            alt="{{ user.name }} - Profile Picture"
