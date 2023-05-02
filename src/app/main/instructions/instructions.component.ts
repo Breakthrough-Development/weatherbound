@@ -9,7 +9,7 @@ import { InstructionsService } from './instructions.service';
 })
 export class InstructionsComponent implements OnInit {
   showInstructions = this.instructionsService.showInstructions.value;
-  isLogin = this.authService.isLogin.value;
+  isLogin = this.authService.isLoggedIn.value;
 
   constructor(
     private readonly authService: AuthService,
@@ -17,7 +17,7 @@ export class InstructionsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.authService.isLogin.subscribe((value) => (this.isLogin = value));
+    this.authService.isLoggedIn.subscribe((value) => (this.isLogin = value));
     this.instructionsService.showInstructions.subscribe(
       (value) => (this.showInstructions = value)
     );

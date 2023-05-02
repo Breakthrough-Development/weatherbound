@@ -9,7 +9,7 @@ import { UserService } from '../services/user/user.service';
 })
 export class HeaderComponent {
   user = this.userService.user.value;
-  isLogin = this.authService.isLogin.value;
+  isLogin = this.authService.isLoggedIn.value;
   loginUrl = this.authService.googleAuthUrl;
 
   constructor(
@@ -18,7 +18,7 @@ export class HeaderComponent {
   ) {}
 
   ngOnInit(): void {
-    this.authService.isLogin.subscribe((value) => (this.isLogin = value));
+    this.authService.isLoggedIn.subscribe((value) => (this.isLogin = value));
     this.userService.user.subscribe({
       next: (value): void => {
         this.user = value;
@@ -31,7 +31,7 @@ export class HeaderComponent {
 
     this.authService.logout().subscribe({
       next: (_value) => {
-        this.authService.isLogin.next(false);
+        this.authService.isLoggedIn.next(false);
         this.userService.user.next(null);
       },
       error: (err) => console.log('Error login out: ', err),
