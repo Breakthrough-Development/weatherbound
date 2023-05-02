@@ -24,6 +24,11 @@
     </span>
 
   </section>
-  <section class="flex items-center justify-center"><small *ngIf="searchForm.controls.search.disabled" class="text-red-500 ">
-    Please complete the settings.</small></section>
+  <section class="flex items-center justify-center flex-col"
+  >
+    <small *ngIf="searchForm.controls.search.disabled" class="text-red-500 ">
+    Please complete the settings.</small>
+    <small *ngIf="error" class="text-red-500 ">
+      {{error}}</small>
+  </section>
 </form>
