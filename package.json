@@ -9,7 +9,36 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "start:electron": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+
+  },
+  "build": {
+    "appId": "com.royeradames.weatherbound",
+    "productName": "weatherbound",
+    "extraResources": [
+      "icons/app-icon.ico"
+    ],
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "icons/weatherbound-icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "icons/weatherbound-icon.ico"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "icons/weatherbound-icon.ico"
+    }
   },
   "private": true,
   "dependencies": {
