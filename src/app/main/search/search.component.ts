@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { SettingsService } from '../settings/settings.service';
 import { ForecastService } from '../forecast/forecast.service';
 import { SettingsInterface } from '../settings/models/settings.interface';
+import { getControlName } from '../../utility/get-control-name.utility';
 
 interface SearchForm {
   search: FormControl<string>;
@@ -17,6 +18,7 @@ export class SearchComponent implements OnInit {
   searchForm = new FormGroup<SearchForm>({
     search: new FormControl<string>('', { nonNullable: true }),
   });
+  getControlName = getControlName;
 
   constructor(
     private readonly settingsService: SettingsService,

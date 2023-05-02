@@ -3,7 +3,7 @@
     <input
       [ngClass]="{ 'cursor-not-allowed opacity-50': searchForm.controls.search.disabled}"
       class="w-full border border-gray-300 rounded pl-10 p-2"
-      formControlName="search"
+      [formControlName]="getControlName(searchForm, searchForm.controls.search)"
       placeholder="Search..."
       type="text"
     />
