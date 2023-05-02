@@ -24,6 +24,9 @@
         type="text"
         [ngClass]="{ 'cursor-not-allowed opacity-50': isDisable }"
       />
+      <small *ngIf="settingsForm.controls.weatherApiUrl.invalid && settingsForm.controls.weatherApiUrl.touched" class="text-red-500">
+        Base URL is required.
+      </small>
     </section>
 
     <section>
@@ -45,15 +48,19 @@
         >
           {{ showAPIKey ? 'Hide' : 'Show' }}
         </button>
+
       </div>
+      <small *ngIf="settingsForm.controls.apiKey.invalid && settingsForm.controls.apiKey.touched" class="text-red-500">
+        Weather API Key is required.
+      </small>
     </section>
 
     <section class="flex justify-end">
       <button
         class="px-4 py-2 text-white bg-blue-500 hover:bg-blue-600 rounded focus:outline-none"
         type="submit"
-        [disabled]="isDisable"
-        [ngClass]="{ 'cursor-not-allowed opacity-50': isDisable }"
+        [disabled]="isDisable || settingsForm.invalid"
+        [ngClass]="{ 'cursor-not-allowed opacity-50': isDisable || settingsForm.invalid}"
       >
         Update
       </button>
