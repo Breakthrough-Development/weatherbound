@@ -95,7 +95,7 @@ export class SettingsComponent implements OnInit {
         error: (err) => {
           console.error('fail submit', err);
           this.userService.user.next(null);
-          this.authService.isLogin.next(false);
+          this.authService.isLoggedIn.next(false);
         },
       });
   }

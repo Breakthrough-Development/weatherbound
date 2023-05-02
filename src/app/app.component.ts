@@ -12,7 +12,7 @@ import { InstructionsService } from './main/instructions/instructions.service';
 })
 export class AppComponent implements OnInit {
   title = 'results-summary-component';
-  isLogin = this.authService.isLogin.value;
+  isLogin = this.authService.isLoggedIn.value;
   user = this.userService.user.value;
   showInstructions = this.instructionsService.showInstructions.value;
   isSettings = this.settingsService.showSettings.value;
@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
     this.settingsService.showSettings.subscribe(
       (value) => (this.isSettings = value)
     );
-    this.authService.isLogin.subscribe((value) => (this.isLogin = value));
+    this.authService.isLoggedIn.subscribe((value) => (this.isLogin = value));
     this.userService.user.subscribe({
       next: (value): void => {
         this.user = value;
@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
       next: (response) => {
         this.userService.user.next(response.data);
         this.settingsService.userSettings.next(response.data.settings);
-        this.authService.isLogin.next(true);
+        this.authService.isLoggedIn.next(true);
       },
       error: (error) => {
         console.error('Error during token verification:', error);

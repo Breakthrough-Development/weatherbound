@@ -9,7 +9,7 @@ import { UserWithSettingsType } from '../user/user-with-settings.model';
   providedIn: 'root',
 })
 export class AuthService {
-  isLogin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   endpoints = AUTH_ENDPOINTS;
   googleAuthUrl = `${environment['BACKEND_URL']}/${this.endpoints.googleAuth}`;
 

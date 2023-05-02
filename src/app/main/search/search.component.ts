@@ -4,6 +4,8 @@ import { SettingsService } from '../settings/settings.service';
 import { ForecastService } from '../forecast/forecast.service';
 import { SettingsInterface } from '../settings/models/settings.interface';
 import { getControlName } from '../../utility/get-control-name.utility';
+import { UserService } from '../../services/user/user.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 interface SearchForm {
   search: FormControl<string>;
@@ -19,10 +21,13 @@ export class SearchComponent implements OnInit {
     search: new FormControl<string>('', { nonNullable: true }),
   });
   getControlName = getControlName;
+  error = '';
 
   constructor(
     private readonly settingsService: SettingsService,
-    private readonly forecastService: ForecastService
+    private readonly forecastService: ForecastService,
+    private readonly userService: UserService,
+    private readonly authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -56,9 +61,15 @@ export class SearchComponent implements OnInit {
     this.forecastService.current(searchInputValue).subscribe({
       next: (value) => {
         this.forecastService.currentData.next(value.data);
+        this.error = '';
       },
       error: (error) => {
         console.error('Error during the forecast call', error);
+        this.error = error.response.data.message;
+        if (error.response.data.response.status === 401) {
+          this.userService.user.next(null);
+          this.authService.isLoggedIn.next(false);
+        }
       },
     });
   }
