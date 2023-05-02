@@ -5,6 +5,7 @@ import { UserService } from '../../services/user/user.service';
 import { SettingsFormInterface } from './models/settings-form.interface';
 import { getControlName } from '../../utility/get-control-name.utility';
 import { isKeyOfSettingsFormInterface } from './models/is-key-of-settings-form-interface.type';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-settings',
@@ -22,7 +23,8 @@ export class SettingsComponent implements OnInit {
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly settingsService: SettingsService,
-    private readonly userService: UserService
+    private readonly userService: UserService,
+    private readonly authService: AuthService
   ) {
     this.settingsForm = new FormGroup<SettingsFormInterface>({
       weatherApiUrl: new FormControl<string>('', {
@@ -84,6 +86,7 @@ export class SettingsComponent implements OnInit {
         error: (err) => {
           console.error('fail submit', err);
           this.userService.user.next(null);
+          this.authService.isLogin.next(false);
         },
       });
   }
