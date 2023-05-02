@@ -13,7 +13,6 @@ import { InstructionsService } from './main/instructions/instructions.service';
 export class AppComponent implements OnInit {
   title = 'results-summary-component';
   isLogin = this.authService.isLogin.value;
-  loginUrl = this.authService.googleAuthUrl;
   user = this.userService.user.value;
   showInstructions = this.instructionsService.showInstructions.value;
   isSettings = this.settingsService.showSettings.value;
