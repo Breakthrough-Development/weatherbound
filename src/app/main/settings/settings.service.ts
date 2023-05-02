@@ -5,7 +5,7 @@ import { UserInterface } from '../../services/user/user.model';
 import axios, { AxiosResponse } from 'axios';
 import { environment } from '../../../environments/environment';
 import { SettingsInterface } from './models/settings.interface';
-
+import { isValidKey } from '../../utility/is-valid-key.utility';
 @Injectable({
   providedIn: 'root',
 })
@@ -17,7 +17,19 @@ export class SettingsService {
   );
   userSettings: BehaviorSubject<SettingsInterface | null> =
     new BehaviorSubject<SettingsInterface | null>(null);
-  constructor() {}
+  missingValues = new BehaviorSubject<string[]>([]);
+  constructor() {
+    this.userSettings.subscribe((value) => {
+      if (!value) return;
+      const missingValues = [];
+      for (let key in value) {
+        if (isValidKey(key, value) && value[key] == null) {
+          missingValues.push(key);
+        }
+      }
+      this.missingValues.next(missingValues);
+    });
+  }
 
   getSettings(): Observable<AxiosResponse<SettingsInterface>> {
     return from(

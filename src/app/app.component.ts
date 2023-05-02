@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   user = this.userService.user.value;
   showInstructions = this.instructionsService.showInstructions.value;
   isSettings = this.settingsService.showSettings.value;
+  isMissingSettings = true;
   @HostBinding('class') hostClasses =
     'bg-indigo-100 min-h-screen grid grid-rows-[auto_1fr_auto] grid-cols-1 justify-center';
 
@@ -25,7 +26,13 @@ export class AppComponent implements OnInit {
     private readonly userService: UserService,
     private readonly forecastService: ForecastService,
     private readonly instructionsService: InstructionsService
-  ) {}
+  ) {
+    this.settingsService.missingValues.subscribe({
+      next: (value) => {
+        this.isMissingSettings = !!value.length;
+      },
+    });
+  }
 
   ngOnInit(): void {
     this.instructionsService.showInstructions.subscribe(

@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { SettingsService } from './settings.service';
 import { UserService } from '../../services/user/user.service';
 import { SettingsFormInterface } from './models/settings-form.interface';
-import { getControlName } from './utility/get-control-name.utility';
+import { getControlName } from '../../utility/get-control-name.utility';
 import { isKeyOfSettingsFormInterface } from './models/is-key-of-settings-form-interface.type';
 
 @Component({
@@ -17,6 +17,7 @@ export class SettingsComponent implements OnInit {
   isSettings = this.settingsService.showSettings.value;
   isDisable = this.settingsService.areInputsDisable.value;
   getControlName = getControlName;
+  isMissingSettings = true;
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -28,6 +29,11 @@ export class SettingsComponent implements OnInit {
         nonNullable: true,
       }),
       apiKey: new FormControl<string>('', { nonNullable: true }),
+    });
+    this.settingsService.missingValues.subscribe({
+      next: (value) => {
+        this.isMissingSettings = !!value.length;
+      },
     });
   }
 
@@ -75,7 +81,10 @@ export class SettingsComponent implements OnInit {
       })
       .subscribe({
         next: (value) => this.settingsService.userSettings.next(value.data),
-        error: (err) => console.error('fail submit', err),
+        error: (err) => {
+          console.error('fail submit', err);
+          this.userService.user.next(null);
+        },
       });
   }
 
