@@ -39,6 +39,7 @@ export class SearchComponent implements OnInit {
     ) {
       console.log('Settings are not available');
       this.searchForm.controls.search.disable();
+      this.settingsService.showSettings.next(true);
       return;
     }
 

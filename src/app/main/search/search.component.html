@@ -1,6 +1,7 @@
-<form (submit)="onSearch()" [formGroup]="searchForm" class="w-full ">
+<form (submit)="onSearch()" [formGroup]="searchForm" class="w-full">
   <section class="mx-auto max-w-2xl relative">
     <input
+      [ngClass]="{ 'cursor-not-allowed opacity-50': searchForm.controls.search.disabled}"
       class="w-full border border-gray-300 rounded pl-10 p-2"
       formControlName="search"
       placeholder="Search..."
@@ -20,5 +21,9 @@
         <circle cx="11" cy="11" r="8"></circle>
         <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
       </svg>
-    </span></section>
+    </span>
+
+  </section>
+  <section class="flex items-center justify-center"><small *ngIf="searchForm.controls.search.disabled" class="text-red-500 ">
+    Please complete the settings.</small></section>
 </form>
