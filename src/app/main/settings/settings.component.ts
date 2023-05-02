@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { SettingsService } from './settings.service';
 import { UserService } from '../../services/user/user.service';
 import { SettingsFormInterface } from './models/settings-form.interface';
@@ -28,9 +33,13 @@ export class SettingsComponent implements OnInit {
   ) {
     this.settingsForm = new FormGroup<SettingsFormInterface>({
       weatherApiUrl: new FormControl<string>('', {
+        validators: [Validators.required],
         nonNullable: true,
       }),
-      apiKey: new FormControl<string>('', { nonNullable: true }),
+      apiKey: new FormControl<string>('', {
+        validators: [Validators.required],
+        nonNullable: true,
+      }),
     });
     this.settingsService.missingValues.subscribe({
       next: (value) => {
