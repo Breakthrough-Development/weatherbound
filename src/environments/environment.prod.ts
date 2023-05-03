@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  BACKEND_URL: 'https://weatherbound-backend.royeradames.com',
+  BACKEND_URL: 'http://localhost:3000',
 };
