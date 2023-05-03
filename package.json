@@ -1,6 +1,6 @@
 {
   "name": "Weatherbound",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "main.js",
   "scripts": {
     "electron": "ng build --base-href ./ && electron .",
@@ -12,8 +12,7 @@
     "test": "ng test",
     "start:electron": "electron .",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
-
+    "dist": "ng build && electron-builder"
   },
   "build": {
     "appId": "com.royeradames.weatherbound",
