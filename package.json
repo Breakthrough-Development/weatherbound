@@ -12,7 +12,7 @@
     "test": "ng test",
     "start:electron": "electron .",
     "pack": "electron-builder --dir",
-    "dist": "ng build && electron-builder"
+    "dist": "ng build --base-href ./ && electron-builder"
   },
   "build": {
     "appId": "com.royeradames.weatherbound",
@@ -27,7 +27,7 @@
       "output": "build"
     },
     "files": [
-      "dist/**/*",
+      "dist/weatherbound/**/*",
       "main.js"
     ],
     "win": {
